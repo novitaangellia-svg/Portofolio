@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 *{
     margin:0;
@@ -8,22 +8,55 @@
 }
 
 body{
-    font-family:'Outfit',sans-serif;
-    background:#07111f;
+    font-family:'Montserrat',sans-serif;
+    background:#050816;
     color:white;
     overflow-x:hidden;
 }
 
-/* ======================
+/* =========================
+   BACKGROUND EFFECT
+========================= */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#7c3aed;
+    top:-200px;
+    left:-100px;
+    border-radius:50%;
+    filter:blur(150px);
+    opacity:0.4;
+    z-index:-1;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#06b6d4;
+    bottom:-200px;
+    right:-100px;
+    border-radius:50%;
+    filter:blur(150px);
+    opacity:0.4;
+    z-index:-1;
+}
+
+/* =========================
    HEADER
-====================== */
+========================= */
+
 header{
     position:fixed;
     width:100%;
     top:0;
     z-index:999;
-    background:rgba(7,17,31,0.8);
-    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(12px);
     border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
@@ -32,18 +65,19 @@ nav{
     margin:auto;
     display:flex;
     justify-content:center;
+    align-items:center;
     padding:20px;
 }
 
 nav ul{
     display:flex;
-    gap:35px;
+    gap:40px;
     list-style:none;
 }
 
 nav ul li a{
+    color:#fff;
     text-decoration:none;
-    color:#dbeafe;
     font-weight:500;
     transition:0.3s;
     position:relative;
@@ -53,11 +87,12 @@ nav ul li a::after{
     content:'';
     position:absolute;
     left:0;
-    bottom:-6px;
+    bottom:-8px;
     width:0%;
-    height:2px;
-    background:#38bdf8;
-    transition:0.3s;
+    height:3px;
+    border-radius:10px;
+    background:linear-gradient(to right,#22d3ee,#a855f7);
+    transition:0.4s;
 }
 
 nav ul li a:hover::after{
@@ -65,90 +100,61 @@ nav ul li a:hover::after{
 }
 
 nav ul li a:hover{
-    color:#38bdf8;
+    color:#22d3ee;
 }
 
-/* ======================
+/* =========================
    HOME
-====================== */
+========================= */
+
 #home{
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    text-align:center;
     flex-direction:column;
+    text-align:center;
     padding:20px;
-    position:relative;
-    overflow:hidden;
-}
-
-#home::before{
-    content:'';
-    position:absolute;
-    width:600px;
-    height:600px;
-    background:#2563eb;
-    border-radius:50%;
-    filter:blur(150px);
-    opacity:0.25;
-    top:-200px;
-    left:-100px;
-}
-
-#home::after{
-    content:'';
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:#9333ea;
-    border-radius:50%;
-    filter:blur(150px);
-    opacity:0.25;
-    bottom:-200px;
-    right:-100px;
 }
 
 #home h1{
     font-size:5rem;
     font-weight:800;
-    z-index:1;
+    background:linear-gradient(to right,#22d3ee,#c084fc);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
     margin-bottom:20px;
     animation:fadeDown 1s ease;
 }
 
-#home span{
-    color:#38bdf8;
-}
-
 #home p{
     max-width:700px;
-    color:#cbd5e1;
+    color:#d1d5db;
     font-size:1.2rem;
-    z-index:1;
+    line-height:1.8;
     animation:fadeUp 1s ease;
 }
 
 .btn{
     margin-top:35px;
-    padding:15px 35px;
+    padding:15px 40px;
     border-radius:50px;
-    background:linear-gradient(to right,#38bdf8,#6366f1);
-    color:white;
     text-decoration:none;
+    color:white;
     font-weight:600;
+    background:linear-gradient(to right,#06b6d4,#9333ea);
     transition:0.4s;
-    z-index:1;
+    box-shadow:0 10px 30px rgba(147,51,234,0.4);
 }
 
 .btn:hover{
-    transform:translateY(-5px);
-    box-shadow:0 15px 30px rgba(56,189,248,0.4);
+    transform:translateY(-5px) scale(1.03);
 }
 
-/* ======================
+/* =========================
    SECTION
-====================== */
+========================= */
+
 section{
     padding:120px 10%;
 }
@@ -165,33 +171,35 @@ section h2::after{
     width:120px;
     height:5px;
     border-radius:10px;
-    background:linear-gradient(to right,#38bdf8,#8b5cf6);
+    background:linear-gradient(to right,#22d3ee,#9333ea);
     position:absolute;
-    bottom:-18px;
     left:50%;
     transform:translateX(-50%);
+    bottom:-15px;
 }
 
-/* ======================
+/* =========================
    ABOUT
-====================== */
+========================= */
+
 .about-content{
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     gap:70px;
     flex-wrap:wrap;
 }
 
 .about-image img{
-    width:330px;
+    width:320px;
     border-radius:30px;
-    box-shadow:0 20px 50px rgba(0,0,0,0.5);
+    border:3px solid rgba(255,255,255,0.1);
+    box-shadow:0 20px 50px rgba(0,0,0,0.4);
     transition:0.5s;
 }
 
 .about-image img:hover{
-    transform:scale(1.05);
+    transform:scale(1.05) rotate(2deg);
 }
 
 .about-text{
@@ -204,30 +212,42 @@ section h2::after{
 }
 
 .about-text p{
-    color:#cbd5e1;
+    color:#d1d5db;
     line-height:1.9;
 }
 
-/* ======================
+/* =========================
+   CARD STYLE
+========================= */
+
+.project,
+.experience-item,
+.skill,
+.award,
+.contact-box{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:25px;
+    transition:0.4s;
+}
+
+/* =========================
    EXPERIENCE
-====================== */
+========================= */
+
 .experience-container{
     display:grid;
     gap:30px;
 }
 
 .experience-item{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:25px;
     padding:30px;
-    transition:0.4s;
-    backdrop-filter:blur(10px);
 }
 
 .experience-item:hover{
     transform:translateY(-10px);
-    box-shadow:0 20px 40px rgba(0,0,0,0.3);
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
 }
 
 .experience-item h3{
@@ -236,12 +256,13 @@ section h2::after{
 }
 
 .experience-item p{
-    color:#cbd5e1;
+    color:#d1d5db;
 }
 
-/* ======================
+/* =========================
    PROJECT
-====================== */
+========================= */
+
 .project-container{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -249,15 +270,11 @@ section h2::after{
 }
 
 .project{
-    background:#111827;
-    border-radius:25px;
     overflow:hidden;
-    transition:0.5s;
 }
 
 .project:hover{
     transform:translateY(-12px);
-    box-shadow:0 20px 40px rgba(0,0,0,0.4);
 }
 
 .project img{
@@ -275,12 +292,13 @@ section h2::after{
 }
 
 .project-text p{
-    color:#cbd5e1;
+    color:#d1d5db;
 }
 
-/* ======================
+/* =========================
    SKILLS
-====================== */
+========================= */
+
 .skills{
     display:flex;
     justify-content:center;
@@ -289,42 +307,37 @@ section h2::after{
 }
 
 .skill{
-    width:140px;
-    height:140px;
-    background:#111827;
-    border-radius:25px;
+    width:150px;
+    height:150px;
     display:flex;
     justify-content:center;
     align-items:center;
-    transition:0.4s;
     overflow:hidden;
 }
 
 .skill:hover{
-    transform:translateY(-10px) scale(1.05);
-    box-shadow:0 15px 30px rgba(56,189,248,0.3);
+    transform:translateY(-10px) rotate(5deg);
 }
 
 .skill img{
     width:70%;
 }
 
-/* ======================
-   AWARD
-====================== */
+/* =========================
+   AWARDS
+========================= */
+
 .awards{
     display:flex;
     justify-content:center;
-    flex-wrap:wrap;
     gap:30px;
+    flex-wrap:wrap;
 }
 
 .award{
     width:180px;
     height:180px;
-    border-radius:25px;
     overflow:hidden;
-    transition:0.4s;
 }
 
 .award img{
@@ -335,29 +348,28 @@ section h2::after{
 
 .award:hover{
     transform:scale(1.08);
-    box-shadow:0 15px 35px rgba(139,92,246,0.35);
 }
 
-/* ======================
+/* =========================
    CONTACT
-====================== */
+========================= */
+
 .contact-box{
     max-width:700px;
     margin:auto;
-    background:#111827;
     padding:40px;
-    border-radius:30px;
     text-align:center;
 }
 
 .contact-box p{
-    color:#cbd5e1;
+    color:#d1d5db;
     margin-top:15px;
 }
 
-/* ======================
+/* =========================
    FOOTER
-====================== */
+========================= */
+
 footer{
     text-align:center;
     padding:30px;
@@ -365,13 +377,14 @@ footer{
     color:#94a3b8;
 }
 
-/* ======================
+/* =========================
    ANIMATION
-====================== */
+========================= */
+
 @keyframes fadeDown{
     from{
         opacity:0;
-        transform:translateY(-50px);
+        transform:translateY(-40px);
     }
     to{
         opacity:1;
@@ -382,7 +395,7 @@ footer{
 @keyframes fadeUp{
     from{
         opacity:0;
-        transform:translateY(50px);
+        transform:translateY(40px);
     }
     to{
         opacity:1;
@@ -390,22 +403,23 @@ footer{
     }
 }
 
-/* ======================
+/* =========================
    RESPONSIVE
-====================== */
+========================= */
+
 @media(max-width:768px){
 
     #home h1{
         font-size:3rem;
     }
 
-    section{
-        padding:90px 7%;
-    }
-
     nav ul{
         gap:20px;
         flex-wrap:wrap;
+    }
+
+    section{
+        padding:100px 7%;
     }
 
     .about-content{
