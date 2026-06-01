@@ -3,7 +3,6 @@
 :root{
   --bg:#050816;
   --card:#0f172a;
-  --card2:#111c34;
   --text:#f8fafc;
   --sub:#94a3b8;
   --blue:#38bdf8;
@@ -23,14 +22,18 @@ body{
   background:var(--bg);
   color:var(--text);
   overflow-x:hidden;
+  line-height:1.8;
 }
 
-/* BACKGROUND */
+/* =====================
+   BACKGROUND
+===================== */
+
 body::before{
   content:'';
   position:fixed;
-  width:700px;
-  height:700px;
+  width:600px;
+  height:600px;
   background:#2563eb;
   filter:blur(250px);
   opacity:.12;
@@ -42,8 +45,8 @@ body::before{
 body::after{
   content:'';
   position:fixed;
-  width:700px;
-  height:700px;
+  width:600px;
+  height:600px;
   background:#9333ea;
   filter:blur(250px);
   opacity:.12;
@@ -52,23 +55,43 @@ body::after{
   z-index:-1;
 }
 
-/* NAVBAR */
+/* =====================
+   SCROLLBAR
+===================== */
+
+::-webkit-scrollbar{
+  width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(
+    var(--blue),
+    var(--purple)
+  );
+  border-radius:20px;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+
 header{
   position:fixed;
-  width:100%;
   top:0;
+  width:100%;
   z-index:999;
-  backdrop-filter:blur(25px);
-  background:rgba(5,8,22,.7);
+  backdrop-filter:blur(20px);
+  background:rgba(5,8,22,.75);
   border-bottom:1px solid var(--border);
 }
 
 nav ul{
   display:flex;
   justify-content:center;
-  gap:40px;
+  align-items:center;
+  gap:35px;
   list-style:none;
-  padding:22px;
+  padding:20px;
 }
 
 nav a{
@@ -82,35 +105,44 @@ nav a:hover{
   color:var(--blue);
 }
 
-/* SECTION */
+/* =====================
+   SECTION
+===================== */
+
 section{
-  padding:120px 10%;
+  padding:110px 8%;
 }
 
 section h2{
   text-align:center;
-  font-size:2.8rem;
+  font-size:2.7rem;
   margin-bottom:60px;
 }
 
-section h2 span{
+section h2::after{
+  content:'';
+  display:block;
+  width:90px;
+  height:4px;
+  margin:15px auto;
+  border-radius:10px;
   background:linear-gradient(
-  90deg,
-  var(--blue),
-  var(--purple)
+    90deg,
+    var(--blue),
+    var(--purple)
   );
-
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
 }
 
-/* HERO */
+/* =====================
+   HOME
+===================== */
+
 #home{
   min-height:100vh;
   display:flex;
-  flex-direction:column;
   justify-content:center;
   align-items:center;
+  flex-direction:column;
   text-align:center;
 }
 
@@ -121,44 +153,20 @@ section h2 span{
   line-height:1.1;
 }
 
-#home h1 span{
-  background:linear-gradient(
-  90deg,
-  #38bdf8,
-  #8b5cf6
-  );
-
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
 #home p{
+  margin-top:20px;
   color:var(--sub);
   font-size:1.2rem;
-  margin-top:20px;
-  max-width:700px;
 }
 
-.hero-btn{
-  margin-top:35px;
-  padding:14px 35px;
-  border:none;
-  border-radius:50px;
-  background:linear-gradient(
-  90deg,
-  #38bdf8,
-  #8b5cf6
-  );
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-}
+/* =====================
+   ABOUT
+===================== */
 
-/* ABOUT */
 .about-content{
   display:grid;
-  grid-template-columns:300px 1fr;
-  gap:70px;
+  grid-template-columns:280px 1fr;
+  gap:60px;
   align-items:center;
 }
 
@@ -167,26 +175,29 @@ section h2 span{
 }
 
 .about-image img{
-  width:240px;
-  height:240px;
+  width:220px;
+  height:220px;
   object-fit:cover;
+
   border-radius:50%;
-  border:4px solid rgba(56,189,248,.3);
+
+  border:4px solid rgba(56,189,248,.25);
 
   box-shadow:
-  0 0 40px rgba(56,189,248,.25);
+    0 0 30px rgba(56,189,248,.25),
+    0 0 70px rgba(139,92,246,.15);
 }
 
 .about-text{
   background:rgba(255,255,255,.03);
 
-  backdrop-filter:blur(25px);
+  backdrop-filter:blur(20px);
 
   border:1px solid var(--border);
 
   padding:35px;
 
-  border-radius:30px;
+  border-radius:25px;
 }
 
 .about-text p{
@@ -194,7 +205,10 @@ section h2 span{
   text-align:justify;
 }
 
-/* EXPERIENCE */
+/* =====================
+   EXPERIENCE
+===================== */
+
 .experience-container{
   display:flex;
   flex-direction:column;
@@ -203,65 +217,120 @@ section h2 span{
 
 .experience-item{
   display:grid;
-  grid-template-columns:90px 1fr;
-  gap:25px;
+  grid-template-columns:80px 1fr;
+
+  gap:20px;
 
   background:rgba(255,255,255,.03);
 
   border:1px solid var(--border);
 
-  padding:25px;
-
   border-radius:25px;
+
+  padding:25px;
 
   transition:.4s;
 }
 
 .experience-item:hover{
-  transform:translateY(-8px);
+  transform:translateY(-6px);
 
   border-color:var(--blue);
+
+  box-shadow:
+    0 10px 30px rgba(56,189,248,.15);
 }
 
 .experience-item img{
-  width:90px;
-  height:90px;
+  width:80px;
+  height:80px;
   object-fit:cover;
-  border-radius:18px;
+  border-radius:15px;
+
+  border:2px solid rgba(56,189,248,.25);
 }
 
 .experience-text h3{
-  font-size:1.2rem;
   margin-bottom:5px;
+  font-size:1.15rem;
 }
 
 .experience-text p{
   color:var(--sub);
+  margin-bottom:10px;
 }
 
-/* PROJECT */
+.experience-text ul{
+  padding-left:20px;
+}
+
+.experience-text li{
+  color:#cbd5e1;
+  margin-bottom:8px;
+}
+
+/* =====================
+   VERTICAL EXPERIENCE
+===================== */
+
+.experience-item.vertical{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+
+  max-width:900px;
+  margin:auto;
+}
+
+.experience-item.vertical img{
+  width:140px;
+  height:140px;
+
+  border-radius:20px;
+
+  border:3px solid rgba(56,189,248,.25);
+
+  box-shadow:
+    0 10px 25px rgba(56,189,248,.15);
+}
+
+.experience-item.vertical .experience-text{
+  width:100%;
+}
+
+.experience-item.vertical .experience-text ul{
+  max-width:700px;
+  margin:15px auto 0;
+  text-align:left;
+}
+
+/* =====================
+   PROJECTS
+===================== */
+
 .project-container{
   display:grid;
   grid-template-columns:
-  repeat(auto-fit,minmax(350px,1fr));
+  repeat(auto-fit,minmax(320px,1fr));
 
   gap:30px;
 }
 
 .project{
-  overflow:hidden;
-
   background:rgba(255,255,255,.03);
 
   border:1px solid var(--border);
 
-  border-radius:30px;
+  border-radius:25px;
+
+  overflow:hidden;
 
   transition:.4s;
 }
 
 .project:hover{
-  transform:translateY(-10px);
+  transform:translateY(-8px);
 }
 
 .project img{
@@ -282,59 +351,65 @@ section h2 span{
   color:var(--sub);
 }
 
-/* SKILLS */
+/* =====================
+   SKILLS
+===================== */
+
 .skills{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:18px;
+  gap:20px;
 }
 
 .skill{
-  width:90px;
-  height:90px;
+  width:75px;
+  height:75px;
 
   background:var(--card);
 
   border:1px solid var(--border);
 
-  border-radius:20px;
+  border-radius:18px;
 
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 
   transition:.4s;
 }
 
 .skill:hover{
-  transform:translateY(-8px);
+  transform:translateY(-6px);
 
   box-shadow:
-  0 10px 30px rgba(56,189,248,.2);
+    0 10px 25px rgba(56,189,248,.15);
 }
 
 .skill img{
-  width:50px;
-  height:50px;
+  width:45px;
+  height:45px;
   object-fit:contain;
 }
 
-/* AWARDS */
+/* =====================
+   AWARDS
+===================== */
+
 .awards{
   display:grid;
   grid-template-columns:
-  repeat(auto-fit,minmax(130px,1fr));
+  repeat(auto-fit,minmax(100px,1fr));
 
   gap:20px;
 }
 
 .award{
-  height:130px;
+  height:100px;
 
   background:var(--card);
 
-  border-radius:25px;
+  border-radius:18px;
 
   overflow:hidden;
 
@@ -344,7 +419,7 @@ section h2 span{
 }
 
 .award:hover{
-  transform:translateY(-8px);
+  transform:translateY(-6px);
 }
 
 .award img{
@@ -353,7 +428,23 @@ section h2 span{
   object-fit:cover;
 }
 
-/* FOOTER */
+.skill-description,
+.award-description{
+  margin-top:25px;
+
+  background:rgba(255,255,255,.03);
+
+  border:1px solid var(--border);
+
+  border-radius:20px;
+
+  padding:25px;
+}
+
+/* =====================
+   FOOTER
+===================== */
+
 footer{
   text-align:center;
   padding:40px;
@@ -361,11 +452,18 @@ footer{
   border-top:1px solid var(--border);
 }
 
-/* MOBILE */
+/* =====================
+   MOBILE
+===================== */
+
 @media(max-width:768px){
 
   #home h1{
-    font-size:2.8rem;
+    font-size:2.7rem;
+  }
+
+  section{
+    padding:90px 5%;
   }
 
   .about-content{
@@ -385,5 +483,15 @@ footer{
 
   .experience-item img{
     margin:auto;
+  }
+
+  .experience-item.vertical img{
+    width:120px;
+    height:120px;
+  }
+
+  nav ul{
+    gap:15px;
+    flex-wrap:wrap;
   }
 }
